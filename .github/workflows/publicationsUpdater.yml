@@ -33,7 +33,7 @@ jobs:
       - name: Install tools
         run: |
           sudo apt -y update
-          sudo apt install -y libwww-curl-perl libjson-pp-perl
+          sudo apt install -y libwww-curl-perl libjson-pp-perl libxml-simple-perl
       - name: Update the publications
         if: ${{ env.adstoken != '' }}
         run: |
