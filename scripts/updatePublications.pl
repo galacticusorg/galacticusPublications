@@ -188,11 +188,14 @@ close($database);
 
 # Send a Slack notification for any new tags needed.
 if ( scalar(@newTags) > 0 ) {
+    print "New tags to be created:\n\t".join("\n\t",@newTags)."\n";
     my $data =
     {
 	tags => join("\n",@newTags)."\n"
     };
     system("curl -X POST -H 'Content-type: application/json' --data '".encode_json($data)."' ".$slackURL);
+} else {
+    print "No new tags to be created\n";
 }
 
 exit;
