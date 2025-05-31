@@ -22,7 +22,7 @@ my %tags;
 open(my $git,"git --git-dir ".$repoPath."/.git tag -l |");
 while ( my $tag = <$git> ) {
     chomp($tag);
-    $tags{$tag} = 1;
+    $tags{$tag} = 0;
 }
 close($git);
 
@@ -163,21 +163,35 @@ foreach my $bibCode ( keys(%bibCodes) ) {
 	my $message = "\"Publication: '".$bibCodes{$bibCode}->{'entry'}->{'title'}."' by ".$bibCodes{$bibCode}->{'entry'}->{'author'}." (".$bibCodes{$bibCode}->{'entry'}->{'year'}.")\"";
 	if ( exists($bibCodes{$bibCode}->{'entry'}->{'arXiv'}) ) {
 	    my $tag = "publication/arXiv/".$bibCodes{$bibCode}->{'entry'}->{'arXiv'};
-	    push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message)
-		unless ( exists($tags{$tag}) );
+	    if ( exists($tags{$tag}) ) {
+		++$tags{$tag};
+	    } else {
+		push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message);
+	    }
 	}
 	if ( exists($bibCodes{$bibCode}->{'entry'}->{'bibCode'}) ) {
 	    (my $bibcodeGitified = $bibCodes{$bibCode}->{'entry'}->{'bibCode'}) =~ s/\./_/g;
 	    my $tag = "publication/bibcode/".$bibcodeGitified;
-	    push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message)
-		unless ( exists($tags{$tag}) );
+	    if ( exists($tags{$tag}) ) {
+		++$tags{$tag};
+	    } else {
+		push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message);
+	    }
 	}
 	if ( exists($bibCodes{$bibCode}->{'entry'}->{'doi'}) ) {
 	    my $tag = "publication/doi/".$bibCodes{$bibCode}->{'entry'}->{'doi'};
-	    push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message)
-		unless ( exists($tags{$tag}) );
+	    if ( exists($tags{$tag}) ) {
+		++$tags{$tag};
+	    } else {
+		push(@newTags,"git tag -a ".$tag." ".$bibCodes{$bibCode}->{'entry'}->{'commit'}." -m ".$message);
+	    }
 	}
     }
+}
+# Add deletes for any obsoleted tags.
+foreach my $tag ( keys(%tags) ) {
+    push(@newTags,"git tag -d ".$tag)
+	if ( $tags{$tag} == 0 );
 }
 print "...done\n";
 
