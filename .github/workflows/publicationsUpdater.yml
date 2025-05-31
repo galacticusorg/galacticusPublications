@@ -44,6 +44,8 @@ jobs:
         with:
           title: "fix: Update publications records"
           commit-message: "fix: Update publications records"
+          add-paths: |
+            publications.xml
           body: |
             Update 
 
