@@ -24,6 +24,8 @@ jobs:
         with:
           repository: galacticusorg/galacticus
           path: galacticus
+      - name: Get tags
+        run: git --git-dir ${{ github.workspace }}/galacticus/.git fetch --tags origin
       - uses: tibdex/github-app-token@v2
         if: ${{ env.appid != '' }}
         id: generate-token
@@ -37,9 +39,6 @@ jobs:
       - name: Update the publications
         if: ${{ env.adstoken != '' }}
         run: |
-          cd ${{ github.workspace }}/galacticus
-          git tag -l
-          cd -
           ./scripts/updatePublications.pl ${{ secrets.NASA_ADS_API_TOKEN }} ${{ secrets.SLACK_WEBHOOK_TAGUPDATE_URL }} ${{ github.workspace }}/galacticus
       - name: Create Pull Request
         if: ${{ ( env.appid != '' ) && ( env.adstoken != '' ) }}
