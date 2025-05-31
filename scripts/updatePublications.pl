@@ -160,7 +160,7 @@ foreach my $bibCode ( keys(%bibCodes) ) {
     }
     # Update repo tags.
     if ( exists($bibCodes{$bibCode}->{'entry'}->{'commit'}) ) {
-	my $message = "\"Publication: '".$bibCodes{$bibCode}->{'entry'}->{'title'}."' by ".$bibCodes{$bibCode}->{'entry'}->{'author'}." (".$bibCodes{$bibCode}->{'entry'}->{'year'}.")\"";
+	my $message = "\"Publication: ".$bibCodes{$bibCode}->{'entry'}->{'title'}." by ".$bibCodes{$bibCode}->{'entry'}->{'author'}." (".$bibCodes{$bibCode}->{'entry'}->{'year'}.")\"";
 	if ( exists($bibCodes{$bibCode}->{'entry'}->{'arXiv'}) ) {
 	    my $tag = "publication/arXiv/".$bibCodes{$bibCode}->{'entry'}->{'arXiv'};
 	    if ( exists($tags{$tag}) ) {
@@ -191,7 +191,7 @@ foreach my $bibCode ( keys(%bibCodes) ) {
 # Add deletes for any obsoleted tags.
 foreach my $tag ( keys(%tags) ) {
     push(@newTags,"git tag -d ".$tag)
-	if ( $tags{$tag} == 0 );
+	if ( $tags{$tag} == 0 && $tag =~ m/^publication\// );
 }
 print "...done\n";
 
@@ -207,7 +207,8 @@ if ( scalar(@newTags) > 0 ) {
     {
 	tags => join("\n",@newTags)."\n"
     };
-    system("curl -X POST -H 'Content-type: application/json' --data '".encode_json($data)."' ".$slackURL);
+    my $json = encode_json($data);
+    system("curl -X POST -H 'Content-type: application/json' --data '".$json."' ".$slackURL);
 } else {
     print "No new tags to be created\n";
 }
