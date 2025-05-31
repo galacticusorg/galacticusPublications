@@ -18,13 +18,17 @@ my $slackURL = $ARGV[1];
 my $repoPath = $ARGV[2];
 
 # Extract all tags from the repo.
+print "Looking for existing tags...\n";
 my %tags;
 open(my $git,"git --git-dir ".$repoPath."/.git tag -l |");
 while ( my $tag = <$git> ) {
     chomp($tag);
     $tags{$tag} = 0;
+    print " found: ".$tag."\n"
+	if ( $tag =~ m/^publication\// );
 }
 close($git);
+print "...done\n";
 
 # Parse the database.
 my $xml          = new XML::Simple();
