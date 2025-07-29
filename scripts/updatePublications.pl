@@ -6,7 +6,7 @@ use WWW::Curl::Easy;
 use JSON::PP qw(encode_json decode_json);
 use Data::Dumper;
 
-# Update the `publications.xml` database, adding in any new data (updated NASA ADS bibcodes, DOIs, etc.), and ensurnig that tags
+# Update the `publications.xml` database, adding in any new data (updated NASA ADS bibcodes, DOIs, etc.), and ensuring that tags
 # in the Galacticus repo are also updated.
 # Andrew Benson (30-May-2025)
 
