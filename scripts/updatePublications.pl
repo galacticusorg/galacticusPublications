@@ -119,6 +119,11 @@ print "...done\n";
 print "Checking for updates...\n";
 my @newTags;
 foreach my $bibCode ( keys(%bibCodes) ) {
+    if ( ! exists($bibCodes{$bibCode}->{'record'}) ) {
+	print "   FAIL: no ADS record found for bibcode '".$bibCode."'\n";
+	exit 1;
+    }
+
     # Replace the bibcode with the canonical bibcode.
     if ( $bibCodes{$bibCode}->{'record'}->{'bibcode'} ne $bibCodes{$bibCode}->{'entry'}->{'bibCode'} ) {
 	print "   update bibcode to canonical value: ".$bibCodes{$bibCode}->{'entry'}->{'bibCode'}." --> ".$bibCodes{$bibCode}->{'record'}->{'bibcode'}."\n";
