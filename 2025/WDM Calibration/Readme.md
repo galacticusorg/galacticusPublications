@@ -10,7 +10,8 @@ This folder contains parameter files for the paper:
   * [DOI]()
 * Galacticus commit hash: [79e9402720115057c0ebaa7b765a71432bd88e62](https://github.com/galacticusorg/galacticus/commit/79e9402720115057c0ebaa7b765a71432bd88e62)
 
-COZMIC raw data files can be found at /carnegie/nobackup/groups/dmtheory/mergerTrees/COZMIC/MilkyWay/
-Symphony raw data files can be found at /carnegie/nobackup/groups/dmtheory/mergerTrees/Symphony
+COZMIC raw data files can be found [here] (https://zenodo.org/records/14649137)
+Symphony raw data files can be found [here](https://web.stanford.edu/group/gfc/gfcsims/build/html/data_access.html)
+Galacticus parameter files used to make plots can be found [here](https://github.com/JackLonergan97/gal_COZMIC_WDM.git)
 
-Additionally, .hdf5 files containing Galacticus/N-body data can be found at: https://zenodo.org/records/17536551
+Additionally, .hdf5 files containing Galacticus/N-body data can be found [here](https://zenodo.org/records/17536551)
