@@ -45,7 +45,7 @@ foreach my $publication ( @{$publications->{'publication'}} ) {
     } elsif ( exists($publication->{'arXiv'  }) ) {
 	# Construct a bibcode from the arXiv number.
 	(my $arXivReduced = $publication->{'arXiv'}) =~ s/\.//;
-	$bibCode = $publication->{'year'}."arXiv".$arXivReduced.substr($publication->{'author'},1,1);
+	$bibCode = $publication->{'year'}."arXiv".$arXivReduced.substr($publication->{'author'},0,1);
     }
     # Store a reference to this publication in our bibcodes dictionary.
     if ( defined($bibCode) ) {
