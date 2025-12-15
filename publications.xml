@@ -1,4 +1,5 @@
 <publications>
+  <publication arXiv="2512.04156" author="Delos, Ahvazi &amp; Benson" bibCode="2025arXiv251204156D" commit="0925ee9aae2d06dbe86d1f4dee29e93087f62dcf" title="Testing warm dark matter with kinematics of the smallest galaxies" year="2025" />
   <publication arXiv="2511.15808" author="Ahvazi et al." bibCode="2025arXiv251115808A" commit="ee197e314ac28f1eca3b6dcc47c5f88682bbddb5" title="The abundance and properties of the lowest luminosity dwarf galaxies around the Milky Way: Insights from Semi-Analytic Models" year="2025" />
   <publication arXiv="2510.27103" author="Lonergan et al." bibCode="2025arXiv251027103L" commit="79e9402720115057c0ebaa7b765a71432bd88e62" title="A Comparison of Galacticus and COZMIC WDM Subhalo Populations" year="2025" />
   <publication arXiv="2504.15468" author="Lonergan et al." bibCode="2025OJAp....8E.103L" commit="4313a4e2c7b68abbec547107e118ad22b33fc556" doi="10.33232/001c.142569" journalURL="https://astro.theoj.org/article/142569-generating-dark-matter-subhalo-populations-using-normalizing-flows" title="Generating Dark Matter Subhalo Populations Using Normalizing Flows" year="2025" />
