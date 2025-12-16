@@ -15,6 +15,6 @@ To run one model copy the template parameter file, set a seed and output filenam
 
 ```bash
 # run Galacticus with changes files (power-spectrum changes and WDM particle changes)
-./Galacticus.exe m1e12_WDM_res7_noSatelliteDestruction_1mergerTree.xml ./powerSpectraSuppressed.xml ./warmDarkMatter_cuspUpdate.xml
+./Galacticus.exe ./m1e12_WDM_res7_noSatelliteDestruction_1mergerTree.xml ./powerSpectraSuppressed.xml ./warmDarkMatter_cuspUpdate.xml
 ```
 
