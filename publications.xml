@@ -1,4 +1,5 @@
 <publications>
+  <publication arXiv="2509.00143" author="Robertson &amp; Benson" bibCode="2025arXiv250900143R" commit="2e60d25f89440de80e024c9f16939c782ec610e6" doi="10.33232/001c.155306" journalURL="https://astro.theoj.org/article/155306-accelerated-calibration-of-semi-analytic-galaxy-formation-models" title="Accelerated calibration of semi-analytic galaxy formation models" year="2026" />
   <publication arXiv="2512.04156" author="Delos, Ahvazi &amp; Benson" bibCode="2025arXiv251204156D" commit="0925ee9aae2d06dbe86d1f4dee29e93087f62dcf" title="Testing warm dark matter with kinematics of the smallest galaxies" year="2025" />
   <publication arXiv="2511.15808" author="Ahvazi et al." bibCode="2025arXiv251115808A" commit="ee197e314ac28f1eca3b6dcc47c5f88682bbddb5" title="The abundance and properties of the lowest luminosity dwarf galaxies around the Milky Way: Insights from Semi-Analytic Models" year="2025" />
   <publication arXiv="2510.27103" author="Lonergan et al." bibCode="2025arXiv251027103L" commit="79e9402720115057c0ebaa7b765a71432bd88e62" title="A Comparison of Galacticus and COZMIC WDM Subhalo Populations" year="2025" />
