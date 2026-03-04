@@ -5,7 +5,7 @@ This folder contains parameter files for the paper:
 * Publication year: 2026
 * URLs:
   * [arXiv](https://arxiv.org/abs/2509.00143)
-  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2025arXiv250900143R)
+  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2026OJAp....955306R)
   * [Journal](https://astro.theoj.org/article/155306-accelerated-calibration-of-semi-analytic-galaxy-formation-models)
   * [DOI](https://doi.org/10.33232/001c.155306)
 * Galacticus commit hash: [2e60d25f89440de80e024c9f16939c782ec610e6](https://github.com/galacticusorg/galacticus/commit/2e60d25f89440de80e024c9f16939c782ec610e6)
