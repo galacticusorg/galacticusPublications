@@ -1,4 +1,4 @@
-This folder contains parameter files for the paper:
+This folder contains meta-data for the paper:
 
 * Title: _"Growing the First Galaxies' Merger Trees"_
 * Author(s): Nadler et al.
