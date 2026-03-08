@@ -217,7 +217,8 @@ if ( scalar(@newTags) > 0 ) {
 	tags => join("\n",@newTags)."\n"
     };
     my $json = encode_json($data);
-    system("curl -X POST -H 'Content-type: application/json' --data '".$json."' ".$slackURL);
+    (my $jsonEscaped = $json) =~ s/'/'\\''/g;
+    system("curl -X POST -H 'Content-type: application/json' --data '".$jsonEscaped."' ".$slackURL);
 } else {
     print "No new tags to be created\n";
 }
