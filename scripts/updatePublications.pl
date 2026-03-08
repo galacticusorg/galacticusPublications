@@ -218,7 +218,9 @@ if ( scalar(@newTags) > 0 ) {
     };
     my $json = encode_json($data);
     (my $jsonEscaped = $json) =~ s/'/'\\''/g;
-    system("curl -X POST -H 'Content-type: application/json' --data '".$jsonEscaped."' ".$slackURL);
+    my $curlStatus = system("curl -X POST -H 'Content-type: application/json' --data '".$jsonEscaped."' ".$slackURL);
+    warn("Warning: curl exited with status ".($curlStatus >> 8)." when sending Slack notification\n")
+	if $curlStatus != 0;
 } else {
     print "No new tags to be created\n";
 }
