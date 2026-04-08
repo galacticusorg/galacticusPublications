@@ -5,9 +5,9 @@ This folder contains parameter files for the paper:
 * Publication year: 2025
 * URLs:
   * [arXiv](https://arxiv.org/abs/2510.27103)
-  * [NASA ADS]()
-  * [Journal]()
-  * [DOI]()
+  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2026OJAp....958826L)
+  * [Journal](https://astro.theoj.org/article/158826-a-comparison-of-galacticus-and-cozmic-wdm-subhalo-populations)
+  * [DOI](https://doi.org/10.33232/001c.158826)
 * Galacticus commit hash: [79e9402720115057c0ebaa7b765a71432bd88e62](https://github.com/galacticusorg/galacticus/commit/79e9402720115057c0ebaa7b765a71432bd88e62)
 
 COZMIC raw data files can be found [here](https://zenodo.org/records/14649137).
