@@ -5,7 +5,9 @@ This folder contains parameter files for the paper:
 * Publication year: 2026
 * URLs:
   * [arXiv](https://arxiv.org/abs/2602.01549)
-  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2026arXiv260201549D)
+  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2026ApJ..1001..151D)
+  * [Journal](https://iopscience.iop.org/article/10.3847/1538-4357/ae40bd)
+  * [DOI](https://doi.org/10.3847/1538-4357/ae40bd)
 * Galacticus commit hash: [35bbde0a9589995f07440bc0a616b6005a1c3111](https://github.com/galacticusorg/galacticus/commit/35bbde0a9589995f07440bc0a616b6005a1c3111)
 * Datasets commit hash: [cc089afd9e3e12b0c969ff200de34e8facdcb445](https://github.com/galacticusorg/datasets/commit/cc089afd9e3e12b0c969ff200de34e8facdcb445)
 
