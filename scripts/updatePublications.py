@@ -7,7 +7,6 @@ Andrew Benson (30-May-2025; ported to Python 09-May-2026)
 """
 
 import json
-import re
 import subprocess
 import sys
 import urllib.error
@@ -125,21 +124,28 @@ def main():
                 print(f"   update doi for bibcode {entry.get('bibCode')} to: {doi}")
             break
 
-        # Add journal URL if necessary.
+        # Add journal URL if necessary. Resolve the DOI via doi.org's
+        # handle API, which returns the publisher URL as structured JSON.
         if "doi" in entry.attrib:
             try:
-                with urllib.request.urlopen(f"https://doi.org/{entry.get('doi')}") as response:
-                    doi_body = response.read().decode("utf-8", errors="replace")
+                with urllib.request.urlopen(
+                    f"https://doi.org/api/handles/{entry.get('doi')}"
+                ) as response:
+                    handle = json.loads(response.read())
             except urllib.error.URLError as error:
                 sys.exit(
                     f"Failed to resolve DOI for bibcode {entry.get('bibCode')}: "
                     f"{error.reason}"
                 )
-            journal_url = None
-            for line in doi_body.splitlines():
-                match = re.search(r'href="(.+)"', line)
-                if match and not re.search(r'arxiv', match.group(1), re.IGNORECASE):
-                    journal_url = match.group(1)
+            journal_url = next(
+                (
+                    value["data"]["value"]
+                    for value in handle.get("values", [])
+                    if value.get("type") == "URL"
+                    and "arxiv" not in value["data"]["value"].lower()
+                ),
+                None,
+            )
             if journal_url is not None and journal_url != entry.get("journalURL"):
                 entry.set("journalURL", journal_url)
                 print(
