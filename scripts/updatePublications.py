@@ -7,11 +7,24 @@ Andrew Benson (30-May-2025; ported to Python 09-May-2026)
 """
 
 import json
+import re
 import subprocess
 import sys
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
+
+
+# Schema for entries in publications.xml. Validated on read and before write.
+PUBLICATION_REQUIRED = ("author", "commit", "title", "year")
+PUBLICATION_OPTIONAL = ("arXiv", "bibCode", "doi", "journalURL")
+PUBLICATION_PATTERNS = {
+    "year":       r"^\d{4}$",
+    "commit":     r"^[0-9a-f]{40}$",
+    "arXiv":      r"^(?:\d{4}\.\d{4,5}|[\w\-]+/\d{7})$",
+    "doi":        r"^10\.\d+/\S+$",
+    "journalURL": r"^https?://",
+}
 
 
 def main():
@@ -34,9 +47,10 @@ def main():
             print(f" found: {tag}")
     print("...done")
 
-    # Parse the database.
+    # Parse and validate the database.
     tree = ET.parse("publications.xml")
-    publications = list(tree.getroot().findall("publication"))
+    root = tree.getroot()
+    publications = validate_publications(root, "input")
 
     # Extract/construct current bibcodes.
     print("Searching for bibcodes in database...")
@@ -179,7 +193,8 @@ def main():
             new_tags.append(f"git tag -d {tag}")
     print("...done")
 
-    # Write updated database file.
+    # Validate and write updated database file.
+    validate_publications(root, "output")
     write_publications("publications.xml", publications)
 
     # Send a Slack notification for any new tags needed.
@@ -202,6 +217,45 @@ def main():
             )
     else:
         print("No new tags to be created")
+
+
+def validate_publications(root, label):
+    """Check the publications XML against PUBLICATION_REQUIRED / _OPTIONAL /
+    _PATTERNS. Exit with a clear error report on any failure. Returns the
+    list of <publication> elements on success.
+    """
+    errors = []
+    if root.tag != "publications":
+        errors.append(f"root element is <{root.tag}>, expected <publications>")
+    publications = []
+    for index, child in enumerate(root):
+        if child.tag != "publication":
+            errors.append(f"unexpected element <{child.tag}> at position {index}")
+            continue
+        publications.append(child)
+        attrs = child.attrib
+        identifier = attrs.get("bibCode") or attrs.get("arXiv") or f"<entry #{index}>"
+        for name in PUBLICATION_REQUIRED:
+            if name not in attrs:
+                errors.append(f"{identifier}: missing required attribute '{name}'")
+        if "bibCode" not in attrs and "arXiv" not in attrs:
+            errors.append(f"{identifier}: must have at least one of 'bibCode' or 'arXiv'")
+        allowed = set(PUBLICATION_REQUIRED) | set(PUBLICATION_OPTIONAL)
+        for name in attrs:
+            if name not in allowed:
+                errors.append(f"{identifier}: unknown attribute '{name}'")
+        for name, pattern in PUBLICATION_PATTERNS.items():
+            value = attrs.get(name)
+            if value is not None and not re.match(pattern, value):
+                errors.append(
+                    f"{identifier}: '{name}'={value!r} does not match /{pattern}/"
+                )
+    if errors:
+        sys.exit(
+            f"publications.xml validation failed ({label}):\n  "
+            + "\n  ".join(errors)
+        )
+    return publications
 
 
 def write_publications(path, publications):
