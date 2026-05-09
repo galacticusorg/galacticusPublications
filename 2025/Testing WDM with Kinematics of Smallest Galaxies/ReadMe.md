@@ -5,7 +5,7 @@ This folder contains parameter files for the paper:
 * Publication year: 2025
 * URLs:
   * [arXiv](https://arxiv.org/abs/2512.04156)
-  
+  * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2025arXiv251204156D)
 * Galacticus commit hash: [0925ee9aae2d06dbe86d1f4dee29e93087f62dcf](https://github.com/galacticusorg/galacticus/commit/0925ee9aae2d06dbe86d1f4dee29e93087f62dcf)
 * Datasets commit hash: [6cadb6487cd1d3ee531088862493ef12f2cfd407](https://github.com/galacticusorg/datasets/commit/6cadb6487cd1d3ee531088862493ef12f2cfd407)
 
