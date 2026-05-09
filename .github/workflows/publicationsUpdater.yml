@@ -32,14 +32,10 @@ jobs:
         with:
           app_id: ${{ secrets.DEPLOY_APP_ID }}
           private_key: ${{ secrets.DEPLOY_APP_PRIVATE_KEY }}
-      - name: Install tools
-        run: |
-          sudo apt -y update
-          sudo apt install -y libwww-curl-perl libjson-pp-perl libxml-simple-perl
       - name: Update the publications
         if: ${{ env.adstoken != '' }}
         run: |
-          ./scripts/updatePublications.pl ${{ secrets.NASA_ADS_API_TOKEN }} ${{ secrets.SLACK_WEBHOOK_TAGUPDATE_URL }} ${{ github.workspace }}/galacticus
+          ./scripts/updatePublications.py ${{ secrets.NASA_ADS_API_TOKEN }} ${{ secrets.SLACK_WEBHOOK_TAGUPDATE_URL }} ${{ github.workspace }}/galacticus
       - name: Create Pull Request
         if: ${{ ( env.appid != '' ) && ( env.adstoken != '' ) }}
         uses: peter-evans/create-pull-request@v7
