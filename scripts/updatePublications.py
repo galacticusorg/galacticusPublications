@@ -17,13 +17,14 @@ import xml.etree.ElementTree as ET
 
 # Schema for entries in publications.xml. Validated on read and before write.
 PUBLICATION_REQUIRED = ("author", "commit", "title", "year")
-PUBLICATION_OPTIONAL = ("arXiv", "bibCode", "doi", "journalURL")
+PUBLICATION_OPTIONAL = ("arXiv", "bibCode", "datasetsCommit", "doi", "journalURL")
 PUBLICATION_PATTERNS = {
-    "year":       r"^\d{4}$",
-    "commit":     r"^[0-9a-f]{40}$",
-    "arXiv":      r"^(?:\d{4}\.\d{4,5}|[\w\-]+/\d{7})$",
-    "doi":        r"^10\.\d+/\S+$",
-    "journalURL": r"^https?://",
+    "year":           r"^\d{4}$",
+    "commit":         r"^[0-9a-f]{40}$",
+    "datasetsCommit": r"^[0-9a-f]{40}$",
+    "arXiv":          r"^(?:\d{4}\.\d{4,5}|[\w\-]+/\d{7})$",
+    "doi":            r"^10\.\d+/\S+$",
+    "journalURL":     r"^https?://",
 }
 
 
