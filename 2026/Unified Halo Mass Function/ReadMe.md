@@ -14,3 +14,5 @@ The MCMC analysis in this paper was run using the command:
 ./constraints/pipelines/darkMatter/pipeline.pl --outputDirectory mcmc --generateContent yes --updateResults no --waitSleepDuration 5 --submitSleepDuration 1 --slurmJobMaximum 500 --haloMassFunction:nodes 5 --haloMassFunction:ppn 32 --binAverage false --removeAccelerator true --removeErrorConvolved false --removeDetectionEfficiency false --removeSimulationVariance false --removeMultiplier false --includeCorrelations false --heatRepeats false --countParticlesMinimum 300 --select Symphony::LMC,MilkyWay,Group::best::CDM::*::* --select COZMIC::MilkyWay::best::*::*::* --select MDPL::*::resolutionX1::CDM::*::*
 ```
 which will generate the relevant parameter files, submit a MCMC job (assuming a SLURM queue manager), and generate the final halo mass function models.
+
+MCMC chains will be made available on Zenodo once this paper is finalized.
