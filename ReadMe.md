@@ -2,6 +2,8 @@
 
 This repo contains parameter files and commit details for Galacticus models used in published papers.
 
+Written a paper that uses Galacticus? We'd welcome your contribution — see [`Contributing.md`](Contributing.md) for how to add it.
+
 Subfolders (organized by publication year) contain a `ReadMe.md` file that specifies the name, author, and year of the publication, URLs to arXiv, NASA ADS, and journal copies of the paper, the Galacticus commit hash that was used to run models, and any other pertinent information. Any parameter files used to run the models are also included in the subfolder.
 
 The `publications.xml` file contains the same information in machine-readable form, and is the source of truth used by automation (see `scripts/updatePublications.pl`). Each `<publication>` element supports the following attributes:
