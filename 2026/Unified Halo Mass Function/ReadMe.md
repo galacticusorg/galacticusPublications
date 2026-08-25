@@ -15,4 +15,4 @@ The MCMC analysis in this paper was run using the command:
 ```
 which will generate the relevant parameter files, submit a MCMC job (assuming a SLURM queue manager), and generate the final halo mass function models.
 
-MCMC chains will be made available on Zenodo once this paper is finalized.
+MCMC chains from this work are available via Zenodo at the following DOI: [10.5281/zenodo.22098931](https://doi.org/10.5281/zenodo.22098931).
