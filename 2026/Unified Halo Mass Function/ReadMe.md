@@ -6,6 +6,8 @@ This folder contains parameter files for the paper:
 * URLs:
   * [arXiv](https://arxiv.org/abs/2606.12137)
   * [NASA ADS](https://ui.adsabs.harvard.edu/abs/2026arXiv260612137B)
+  * [Journal](https://astro.theoj.org/article/170877-a-unified-halo-mass-function-across-dark-matter-models-from-high-resolution-multi-scale-simulations)
+  * [DOI](https://doi.org/10.33232/001c.170877)
 * Galacticus commit hash: [0240b78c4372937b619af2788d309452d6fe9f07](https://github.com/galacticusorg/galacticus/commit/0240b78c4372937b619af2788d309452d6fe9f07)
 * Datasets commit hash: [cc089afd9e3e12b0c969ff200de34e8facdcb445](https://github.com/galacticusorg/datasets/commit/cc089afd9e3e12b0c969ff200de34e8facdcb445)
 
